@@ -10,6 +10,7 @@ public class Main {
             String option = line.substring(5, line.length());
 
             if (argument.startsWith("-")) {
+                System.out.println(argument);
                 String[] tokens = option.split(",");
                 for (String t : tokens)
                     System.out.println(t);
