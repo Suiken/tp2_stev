@@ -5,14 +5,15 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void extractArgument(String line) {
+        if (line.length() > 2) {
+            String argument = line.substring(0, 2);
+            String option = line.substring(4, line.length() - 1);
 
-        String argument = line.substring(0, 2);
-        String option = line.substring(4, line.length() - 1);
-
-        if (argument.startsWith("-")) {
-            String[] tokens = option.split(",");
-            for (String t : tokens)
-                System.out.println(t);
+            if (argument.startsWith("-")) {
+                String[] tokens = option.split(",");
+                for (String t : tokens)
+                    System.out.println(t);
+            }
         }
     }
 
