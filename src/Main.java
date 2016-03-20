@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         try {
-            ProcessBuilder pb = new ProcessBuilder("/home/stev/tp2-app.sh -h");
+            ProcessBuilder pb = new ProcessBuilder("/home/stev/tp2-app.sh");
             Process p = pb.start();     // Start the process.
             p.waitFor();                // Wait for the process to finish.
             InputStream stderr = p.getErrorStream();
