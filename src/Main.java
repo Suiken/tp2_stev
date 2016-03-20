@@ -1,12 +1,11 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.regex.Pattern;
 
 public class Main {
 
-    public static void invalidCombinaison(String line) {
-        if (line.matches("^ ")) {
+    public static void invalidCombination(String line) {
+        if (line.matches("[a-z] = ")) {
             System.out.println(line);
         }
     }
@@ -33,7 +32,7 @@ public class Main {
             String line = null;
             while ((line = reader.readLine()) != null) {
 //                extractArgument(line);
-                invalidCombinaison(line);
+                invalidCombination(line);
             }
         } catch (Exception e) {
             e.printStackTrace();
