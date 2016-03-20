@@ -5,8 +5,8 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void extractArgument(String line) {
-        if (line.length() > 2) {
-            String argument = line.substring(0, 2);
+        if (line.length() > 3) {
+            String argument = line.substring(1, 3);
             String option = line.substring(4, line.length() - 1);
 
             if (argument.startsWith("-")) {
@@ -24,8 +24,8 @@ public class Main {
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-//                extractArgument(line);
+//                System.out.println(line);
+                extractArgument(line);
             }
         } catch (Exception e) {
             e.printStackTrace();
