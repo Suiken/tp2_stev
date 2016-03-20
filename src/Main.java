@@ -4,10 +4,16 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void extractArgument(String argument) {
-        String[] tokens = argument.split(",");
-        for (String t : tokens)
-            System.out.println(t);
+    public static void extractArgument(String line) {
+
+        String argument = line.substring(0, 2);
+        String option = line.substring(4, line.length());
+
+        if (argument.startsWith("-")) {
+            String[] tokens = option.split(",");
+            for (String t : tokens)
+                System.out.println(t);
+        }
     }
 
     public static void main(String[] args) throws IOException {
