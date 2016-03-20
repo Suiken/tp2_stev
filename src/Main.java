@@ -1,8 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Pattern;
 
 public class Main {
+
+    public static void invalidCombinaison(String line) {
+        if (line.matches("^( [a-z] = )")) {
+            System.out.println(line);
+        }
+    }
 
     public static void extractArgument(String line) {
         if (line.length() > 3) {
@@ -25,8 +32,8 @@ public class Main {
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) != null) {
-//                System.out.println(line);
                 extractArgument(line);
+                invalidCombinaison(line);
             }
         } catch (Exception e) {
             e.printStackTrace();
