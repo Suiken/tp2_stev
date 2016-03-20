@@ -7,7 +7,7 @@ public class Main {
     public static void extractArgument(String line) {
 
         String argument = line.substring(0, 2);
-        String option = line.substring(4, line.length());
+        String option = line.substring(4, line.length() - 1);
 
         if (argument.startsWith("-")) {
             String[] tokens = option.split(",");
@@ -25,7 +25,7 @@ public class Main {
             while ((line = reader.readLine()) != null) {
                 extractArgument(line);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
