@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void invalidCombinaison(String line) {
-        if (line.matches("^([a-z] = )")) {
+        if (line.matches("^[a-z] = ")) {
             System.out.println(line);
         }
     }
@@ -32,7 +32,7 @@ public class Main {
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) != null) {
-                extractArgument(line);
+//                extractArgument(line);
                 invalidCombinaison(line);
             }
         } catch (Exception e) {
