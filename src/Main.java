@@ -6,6 +6,6 @@ public class Main {
 
         Process process = Runtime.getRuntime().exec("/home/stev/tp2-app.sh -h");
         InputStream stderr = process.getErrorStream();
-        System.out.println(stderr.toString());
+        System.out.println(stderr);
     }
 }
