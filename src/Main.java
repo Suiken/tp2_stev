@@ -4,6 +4,12 @@ import java.io.InputStreamReader;
 
 public class Main {
 
+    public static void invalidCombination(String line) {
+        if (line.matches("[a-z] = ")) {
+            System.out.println(line);
+        }
+    }
+
     public static void extractArgument(String line, Arguments arguments) {
         if (line.length() > 3) {
             String argument = line.substring(1, 3);
@@ -25,8 +31,8 @@ public class Main {
             String line = null;
             Arguments arguments = new Arguments();
             while ((line = reader.readLine()) != null) {
-//                System.out.println(line);
                 extractArgument(line, arguments);
+                invalidCombination(line);
             }
 
             System.out.println(arguments);
