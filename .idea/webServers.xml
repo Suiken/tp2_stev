@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7d5f285e-9725-4707-abc0-a441d37a4700" name="sftp cours" url="http://107.170.0.149">
+        <fileTransfer host="107.170.0.149" port="22" rootFolder="/home/kevin.suy1" accessType="SFTP" username="kevin.suy1">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -4,16 +4,15 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void extractArgument(String line) {
+    public static void extractArgument(String line, Arguments arguments) {
         if (line.length() > 3) {
             String argument = line.substring(1, 3);
             String option = line.substring(5, line.length());
 
             if (argument.startsWith("-")) {
-                System.out.println(argument);
                 String[] tokens = option.split(",");
                 for (String t : tokens)
-                    System.out.println(t);
+                    arguments.addOption(argument, t);
             }
         }
     }
@@ -24,10 +23,13 @@ public class Main {
             p.getErrorStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
+            Arguments arguments = new Arguments();
             while ((line = reader.readLine()) != null) {
 //                System.out.println(line);
-                extractArgument(line);
+                extractArgument(line, arguments);
             }
+
+            System.out.println(arguments);
         } catch (Exception e) {
             e.printStackTrace();
         }
