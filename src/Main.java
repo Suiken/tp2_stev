@@ -24,7 +24,8 @@ public class Main {
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
             while ((line = reader.readLine()) != null) {
-                extractArgument(line);
+                System.out.println(line + '\n');
+//                extractArgument(line);
             }
         } catch (Exception e) {
             e.printStackTrace();
