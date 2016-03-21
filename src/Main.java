@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class Main {
 
@@ -23,8 +21,11 @@ public class Main {
         }
     }
 
-    public static void generateDataFile(Arguments arguments) {
-
+    public static void generateDataFile(Arguments arguments) throws FileNotFoundException, UnsupportedEncodingException {
+        String dataArguments = arguments.formatQICT();
+        PrintWriter writer = new PrintWriter("dataArguments.txt", "UTF-8");
+        writer.println(dataArguments);
+        writer.close();
     }
 
     public static void main(String[] args) throws IOException {
@@ -39,7 +40,7 @@ public class Main {
                 extractArgument(line, arguments);
                 invalidCombination(line, constraints);
             }
-
+            generateDataFile(arguments);
 //            System.out.println(arguments);
             System.out.println(arguments.formatQICT());
             System.out.println(constraints);
