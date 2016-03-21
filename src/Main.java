@@ -5,7 +5,14 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void invalidCombination(String line) {
+        String[] constraint;
+        String[] subConstraint;
+
         if (line.matches("^\\s[a-z].+")) {
+            constraint = line.split("&");
+            for (String t : constraint) {
+                subConstraint = t.split("=");
+            }
             System.out.println(line);
         }
     }
