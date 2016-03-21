@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void invalidCombination(String line) {
-        if (line.matches("*[a-z]*")) {
+        if (line.matches("^\\s[a-z].+")) {
             System.out.println(line);
         }
     }
@@ -31,7 +31,7 @@ public class Main {
             String line = null;
             Arguments arguments = new Arguments();
             while ((line = reader.readLine()) != null) {
-                extractArgument(line, arguments);
+                //extractArgument(line, arguments);
                 invalidCombination(line);
             }
 

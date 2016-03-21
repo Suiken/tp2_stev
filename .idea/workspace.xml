@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd0e37d6-beb5-4bd1-bdb5-acee878b0826" name="Default" comment="project initialization">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
     </list>
     <ignored path="tp2_stev.iws" />
@@ -25,21 +26,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="true" current-in-tab="false">
-        <entry file="REMOTE_DEPLOYMENT_FS://&lt;7d5f285e-9725-4707-abc0-a441d37a4700&gt;/tp2_stev/src/Main.java">
+      <file leaf-file-name="Question1.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../TP2-Question1.jar!/Question1.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.4324324">
-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="17" selection-end-column="5" />
-              <folding />
+            <state vertical-scroll-proportion="-40.62069">
+              <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Question1.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../TP2-Question1.jar!/Question1.class">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="REMOTE_DEPLOYMENT_FS://&lt;7d5f285e-9725-4707-abc0-a441d37a4700&gt;/tp2_stev/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.37931">
-              <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
+            <state vertical-scroll-proportion="-3.4054055">
+              <caret line="7" column="37" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,8 +53,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55258125">
-              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.17208412">
+              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -89,10 +92,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="107.170.0.149" />
-        <option value="&lt;7d5f285e-9725-4707-abc0-a441d37a4700&gt;/tp2_stev/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Command.java" />
         <option value="$PROJECT_DIR$/src/Argument.java" />
         <option value="$PROJECT_DIR$/src/Arguments.java" />
+        <option value="&lt;7d5f285e-9725-4707-abc0-a441d37a4700&gt;/tp2_stev/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
@@ -623,7 +626,7 @@
       <created>1458510630427</created>
       <option name="number" value="Default" />
       <updated>1458510630427</updated>
-      <workItem from="1458510633439" duration="6681000" />
+      <workItem from="1458510633439" duration="8390000" />
     </task>
     <task id="LOCAL-00001" summary="project initialization">
       <created>1458510738253</created>
@@ -635,7 +638,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6681000" />
+    <option name="totallyTimeSpent" value="8390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="979" extended-state="6" />
@@ -696,8 +699,8 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/../TP2-Question1.jar!/Question1.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.37931">
-          <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
+        <state vertical-scroll-proportion="-40.62069">
+          <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -706,8 +709,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55258125">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.17208412">
+          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
           <folding />
         </state>
       </provider>
