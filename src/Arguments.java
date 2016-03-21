@@ -33,13 +33,12 @@ public class Arguments {
         for(String argument : arguments.keySet()){
             s += argument + ": ";
             for(String option : arguments.get(argument)){
-                if (option.equals("flag")) {
+                if (option.equals(" flag")) {
                     s += " 0, 1";
                 }
                 else {
                     s += option + ",";
                 }
-                s += option + ",";
             }
             s += "\n";
         }
