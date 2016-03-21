@@ -24,7 +24,7 @@ public class Main {
     public static void generateDataFile(Arguments arguments) throws FileNotFoundException, UnsupportedEncodingException {
         String dataArguments = arguments.formatQICT();
         PrintWriter writer = new PrintWriter("dataArguments.txt", "UTF-8");
-        writer.println(dataArguments);
+        writer.print(dataArguments);
         writer.close();
     }
 
