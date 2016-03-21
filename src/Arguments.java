@@ -45,7 +45,9 @@ public class Arguments {
                         s += "," + option;
                     }
                 }
-                s += "\n";
+                if (!argument.equals(arguments.get(arguments.size()-1))){
+                    s += "\n";
+                }
             }
         }
         return s;
