@@ -32,13 +32,17 @@ public class Arguments {
         String s = new String();
         for(String argument : arguments.keySet()){
             if (!argument.equals("-h")) {
+                boolean firstLoop = true;
                 s += argument + ": ";
                 for(String option : arguments.get(argument)){
                     if (option.equals(" flag")) {
-                        s += " 0, 1";
+                        s += " true, false";
                     }
-                    else {
-                        s += option + ",";
+                    else if (firstLoop){
+                        s += option;
+                        firstLoop = false;
+                    } else {
+                        s += "," + option;
                     }
                 }
                 s += "\n";
