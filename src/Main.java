@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void invalidCombination(String line) {
-        if (line.matches("^([ \\t\\n\\x0b\\r\\f][a-z])?")) {
+        if (line.matches("^([ ][a-z])?")) {
             System.out.println(line);
         }
     }
