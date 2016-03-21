@@ -31,7 +31,7 @@ public class Arguments {
     public String formatQICT() {
         String s = new String();
         for(String argument : arguments.keySet()){
-            if (!argument.equals(" -h")) {
+            if (!argument.equals("-h")) {
                 s += argument + ": ";
                 for(String option : arguments.get(argument)){
                     if (option.equals(" flag")) {
