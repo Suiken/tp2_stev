@@ -31,16 +31,18 @@ public class Arguments {
     public String formatQICT() {
         String s = new String();
         for(String argument : arguments.keySet()){
-            s += argument + ": ";
-            for(String option : arguments.get(argument)){
-                if (option.equals(" flag")) {
-                    s += " 0, 1";
+            if (!argument.equals(" -h")) {
+                s += argument + ": ";
+                for(String option : arguments.get(argument)){
+                    if (option.equals(" flag")) {
+                        s += " 0, 1";
+                    }
+                    else {
+                        s += option + ",";
+                    }
                 }
-                else {
-                    s += option + ",";
-                }
+                s += "\n";
             }
-            s += "\n";
         }
         return s;
     }
