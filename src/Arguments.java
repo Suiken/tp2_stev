@@ -7,21 +7,21 @@ import java.util.HashMap;
 public class Arguments {
     HashMap<String, ArrayList<String>> arguments = new HashMap<>();
 
-    public void addOption(String argument, String option){
+    public void addOption(String argument, String option) {
         ArrayList<String> options = arguments.get(argument);
-        if(options == null){
+        if (options == null) {
             options = new ArrayList<>();
             options.add(option);
             arguments.put(argument, options);
-        }else
+        } else
             options.add(option);
     }
 
-    public String toString(){
+    public String toString() {
         String s = new String();
-        for(String argument : arguments.keySet()){
+        for (String argument : arguments.keySet()) {
             s += argument + "\n";
-            for(String option : arguments.get(argument)){
+            for (String option : arguments.get(argument)) {
                 s += "\t" + option + "\n";
             }
         }
@@ -30,24 +30,21 @@ public class Arguments {
 
     public String formatQICT() {
         String s = new String();
-        for(String argument : arguments.keySet()){
+        for (String argument : arguments.keySet()) {
             if (!argument.equals("-h")) {
                 boolean firstLoop = true;
                 s += argument + ": ";
-                for(String option : arguments.get(argument)){
+                for (String option : arguments.get(argument)) {
                     if (option.equals(" flag")) {
                         s += " true, false";
-                    }
-                    else if (firstLoop){
+                    } else if (firstLoop) {
                         s += option;
                         firstLoop = false;
                     } else {
                         s += "," + option;
                     }
                 }
-                if (!argument.equals(arguments.get(arguments.size()-1))){
-                    s += "\n";
-                }
+                s += "\n";
             }
         }
         return s;

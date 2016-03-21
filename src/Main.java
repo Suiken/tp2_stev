@@ -51,7 +51,7 @@ public class Main {
         try {
             BufferedReader reader = getBufferFromExecution("/home/stev/tp2-app.sh -h");
             generateQICTFileFromBuffer(reader);
-            reader = getBufferFromExecution("qict /home/kevin.suy1/tp2_stev/src/dataArguments.txt");
+            reader = getBufferFromExecution("qict ./dataArguments.txt");
             String line = new String();
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
