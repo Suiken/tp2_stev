@@ -28,22 +28,34 @@ public class Main {
         writer.close();
     }
 
+    public static BufferedReader getBufferFromExecution(String app) throws Exception {
+        Process p = Runtime.getRuntime().exec(app);
+        p.getErrorStream();
+        return new BufferedReader(new InputStreamReader(p.getInputStream()));
+    }
+
+    public static void generateQICTFileFromBuffer(BufferedReader reader) throws Exception{
+        String line = null;
+        Arguments arguments = new Arguments();
+        Constraints constraints = new Constraints();
+        while ((line = reader.readLine()) != null) {
+            extractArgument(line, arguments);
+            invalidCombination(line, constraints);
+        }
+        generateDataFile(arguments);
+        System.out.println(arguments.formatQICT());
+        System.out.println(constraints);
+    }
+
     public static void main(String[] args) throws IOException {
         try {
-            Process p = Runtime.getRuntime().exec("/home/stev/tp2-app.sh -h");
-            p.getErrorStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String line = null;
-            Arguments arguments = new Arguments();
-            Constraints constraints = new Constraints();
+            BufferedReader reader = getBufferFromExecution("/home/stev/tp2-app.sh -h");
+            generateQICTFileFromBuffer(reader);
+            reader = getBufferFromExecution("qict /home/kevin.suy1/tp2_stev/src/dataArguments.txt");
+            String line = new String();
             while ((line = reader.readLine()) != null) {
-                extractArgument(line, arguments);
-                invalidCombination(line, constraints);
+                System.out.println(line);
             }
-            generateDataFile(arguments);
-//            System.out.println(arguments);
-            System.out.println(arguments.formatQICT());
-            System.out.println(constraints);
         } catch (Exception e) {
             e.printStackTrace();
         }
