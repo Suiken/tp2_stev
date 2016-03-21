@@ -23,6 +23,10 @@ public class Main {
         }
     }
 
+    public static void generateDataFile(Arguments arguments) {
+
+    }
+
     public static void main(String[] args) throws IOException {
         try {
             Process p = Runtime.getRuntime().exec("/home/stev/tp2-app.sh -h");
@@ -36,7 +40,8 @@ public class Main {
                 invalidCombination(line, constraints);
             }
 
-            System.out.println(arguments);
+//            System.out.println(arguments);
+            System.out.println(arguments.formatQICT());
             System.out.println(constraints);
         } catch (Exception e) {
             e.printStackTrace();

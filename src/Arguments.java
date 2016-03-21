@@ -27,4 +27,16 @@ public class Arguments {
         }
         return s;
     }
+
+    public String formatQICT() {
+        String s = new String();
+        for(String argument : arguments.keySet()){
+            s += argument + ": ";
+            for(String option : arguments.get(argument)){
+                s += " " + option + ",";
+            }
+            s += "\n";
+        }
+        return s;
+    }
 }
