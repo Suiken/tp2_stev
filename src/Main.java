@@ -4,9 +4,9 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    public static void invalidCombination(String line) {
+    public static void invalidCombination(String line, Constraints constraints) {
         if (line.matches("^\\s[a-z].+")) {
-            System.out.println(line);
+            constraints.addConstraint(line);
         }
     }
 
@@ -30,12 +30,14 @@ public class Main {
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String line = null;
             Arguments arguments = new Arguments();
+            Constraints constraints = new Constraints();
             while ((line = reader.readLine()) != null) {
-                //extractArgument(line, arguments);
-                invalidCombination(line);
+                extractArgument(line, arguments);
+                invalidCombination(line, constraints);
             }
 
             System.out.println(arguments);
+            System.out.println(constraints);
         } catch (Exception e) {
             e.printStackTrace();
         }

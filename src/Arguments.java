@@ -10,7 +10,7 @@ public class Arguments {
     public void addOption(String argument, String option){
         ArrayList<String> options = arguments.get(argument);
         if(options == null){
-            options = new ArrayList<String>();
+            options = new ArrayList<>();
             options.add(option);
             arguments.put(argument, options);
         }else
