@@ -40,7 +40,7 @@ public class Main {
 
         generateDataFile(arguments);
         //System.out.println(arguments.formatQICT());
-        //System.out.println(constraints);
+        System.out.println(constraints);
     }
 
     public static void getArgumentsAndConstraints(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception{
@@ -68,8 +68,8 @@ public class Main {
                 int i = 1;
                 for(String argumentName: arguments.getArgumentsName()){
                     if(!argumentName.equals("-h")) {
-                        if (combinedArgs[i].equals("on") || combinedArgs[i].equals("off")) {
-                            if (combinedArgs[i].equals("on")) {
+                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
+                            if (combinedArgs[i].equals("true")) {
                                 execution += " " + argumentName;
                             }
                         } else
