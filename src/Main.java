@@ -93,11 +93,9 @@ public class Main {
 
             generateQICTFile(arguments, constraints);
 
-            reader = getBufferFromExecution("qict /home/kevin.suy1/tp2_stev/src/dataArguments.txt");
+            reader = getBufferFromExecution("qict dataArguments.txt");
 
             executeAppWithCombinedTests(reader, arguments, constraints);
-
-            System.out.println("hello world");
 
 //            arguments.toString();
         } catch (Exception e) {
