@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 /**
  * Created by suiken on 21/03/16.
  */
 public class Arguments {
-    HashMap<String, ArrayList<String>> arguments = new HashMap<>();
+    LinkedHashMap<String, ArrayList<String>> arguments = new LinkedHashMap<>();
 
     public void addOption(String argument, String option){
         ArrayList<String> options = arguments.get(argument);
@@ -19,30 +21,35 @@ public class Arguments {
 
     public String toString(){
         String s = new String();
+        int i = 0;
         for(String argument : arguments.keySet()){
             s += argument + "\n";
             for(String option : arguments.get(argument)){
                 s += "\t" + option + "\n";
             }
+            i++;
         }
+        s += " " + i;
         return s;
     }
 
     public String formatQICT() {
         String s = new String();
         for(String argument : arguments.keySet()){
+            System.out.println(argument);
             if (!argument.equals("-h")) {
                 boolean firstLoop = true;
                 s += argument + ": ";
                 for(String option : arguments.get(argument)){
-                    if (option.equals(" flag")) {
-                        s += " true, false";
+                    option = option.replace(" ", "");
+                    if (option.equals("flag")) {
+                        s += "true, false";
                     }
                     else if (firstLoop){
                         s += option;
                         firstLoop = false;
                     } else {
-                        s += "," + option;
+                        s += ", " + option;
                     }
                 }
                 if (!argument.equals(arguments.get(arguments.size()-1))){
@@ -50,6 +57,15 @@ public class Arguments {
                 }
             }
         }
+        System.out.println(s);
         return s;
+    }
+
+    public int getArgumentsNumber(){
+        return arguments.keySet().size();
+    }
+
+    public Set<String> getArgumentsName(){
+        return arguments.keySet();
     }
 }

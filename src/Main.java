@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
 
@@ -34,28 +36,68 @@ public class Main {
         return new BufferedReader(new InputStreamReader(p.getInputStream()));
     }
 
-    public static void generateQICTFileFromBuffer(BufferedReader reader) throws Exception{
-        String line = null;
-        Arguments arguments = new Arguments();
-        Constraints constraints = new Constraints();
+    public static void generateQICTFile(Arguments arguments, Constraints constraints) throws Exception{
+
+        generateDataFile(arguments);
+        //System.out.println(arguments.formatQICT());
+        //System.out.println(constraints);
+    }
+
+    public static void getArgumentsAndConstraints(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception{
+        String line;
         while ((line = reader.readLine()) != null) {
             extractArgument(line, arguments);
             invalidCombination(line, constraints);
         }
-        generateDataFile(arguments);
-        System.out.println(arguments.formatQICT());
-        System.out.println(constraints);
+    }
+
+    public static void printBuffer(BufferedReader reader)throws Exception{
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
+    }
+
+    public static void executeAppWithCombinedTests(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception{
+        String line = new String();
+        ArrayList<HashMap<String, Object>> tests = new ArrayList<>();
+        while ((line = reader.readLine()) != null) {
+            String execution = "/home/stev/tp2-app.sh";
+            String combinedArgs[] = line.split("\\t");
+            if(combinedArgs.length == arguments.getArgumentsNumber()){
+                int i = 1;
+                for(String argumentName: arguments.getArgumentsName()){
+                    if(!argumentName.equals("-h")) {
+                        if (combinedArgs[i].equals("on") || combinedArgs[i].equals("off")) {
+                            if (combinedArgs[i].equals("on")) {
+                                execution += " " + argumentName;
+                            }
+                        } else
+                            execution += " " + argumentName + " " + combinedArgs[i];
+                        i++;
+                    }
+                }
+            }
+            System.out.println(execution);
+            printBuffer(getBufferFromExecution(execution));
+        }
     }
 
     public static void main(String[] args) throws IOException {
         try {
             BufferedReader reader = getBufferFromExecution("/home/stev/tp2-app.sh -h");
-            generateQICTFileFromBuffer(reader);
+
+            Arguments arguments = new Arguments();
+            Constraints constraints = new Constraints();
+            getArgumentsAndConstraints(reader, arguments, constraints);
+
+            generateQICTFile(arguments, constraints);
+
             reader = getBufferFromExecution("qict /home/kevin.suy1/tp2_stev/src/dataArguments.txt");
-            String line = new String();
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
+
+            executeAppWithCombinedTests(reader, arguments, constraints);
+
+            //arguments.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
