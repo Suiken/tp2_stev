@@ -36,14 +36,14 @@ public class Main {
         return new BufferedReader(new InputStreamReader(p.getInputStream()));
     }
 
-    public static void generateQICTFile(Arguments arguments, Constraints constraints) throws Exception{
+    public static void generateQICTFile(Arguments arguments, Constraints constraints) throws Exception {
 
         generateDataFile(arguments);
         //System.out.println(arguments.formatQICT());
         System.out.println(constraints);
     }
 
-    public static void getArgumentsAndConstraints(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception{
+    public static void getArgumentsAndConstraints(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception {
         String line;
         while ((line = reader.readLine()) != null) {
             extractArgument(line, arguments);
@@ -51,23 +51,23 @@ public class Main {
         }
     }
 
-    public static void printBuffer(BufferedReader reader)throws Exception{
+    public static void printBuffer(BufferedReader reader) throws Exception {
         String line;
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
         }
     }
 
-    public static void executeAppWithCombinedTests(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception{
+    public static void executeAppWithCombinedTests(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception {
         String line = new String();
         ArrayList<HashMap<String, Object>> tests = new ArrayList<>();
         while ((line = reader.readLine()) != null) {
             String execution = "/home/stev/tp2-app.sh";
             String combinedArgs[] = line.split("\\t");
-            if(combinedArgs.length == arguments.getArgumentsNumber()){
+            if (combinedArgs.length == arguments.getArgumentsNumber()) {
                 int i = 1;
-                for(String argumentName: arguments.getArgumentsName()){
-                    if(!argumentName.equals("-h")) {
+                for (String argumentName : arguments.getArgumentsName()) {
+                    if (!argumentName.equals("-h")) {
                         if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
                             if (combinedArgs[i].equals("true")) {
                                 execution += " " + argumentName;
@@ -80,7 +80,6 @@ public class Main {
                 System.out.println(execution);
                 printBuffer(getBufferFromExecution(execution));
             }
-
         }
     }
 
@@ -98,7 +97,9 @@ public class Main {
 
             executeAppWithCombinedTests(reader, arguments, constraints);
 
-            //arguments.toString();
+            System.out.println("hello world");
+
+//            arguments.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
