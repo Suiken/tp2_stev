@@ -77,9 +77,10 @@ public class Main {
                         i++;
                     }
                 }
+                System.out.println(execution);
+                printBuffer(getBufferFromExecution(execution));
             }
-            System.out.println(execution);
-            printBuffer(getBufferFromExecution(execution));
+
         }
     }
 
