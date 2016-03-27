@@ -1,8 +1,21 @@
 import java.io.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
+
+    public static void main(String[] args) throws IOException {
+        try {
+            BufferedReader reader = getBufferFromExecution("/home/stev/tp2-app.sh -h");
+            Arguments arguments = new Arguments();
+            Constraints constraints = new Constraints();
+            getArgumentsAndConstraints(reader, arguments, constraints);
+            generateDataFile(arguments);
+            reader = getBufferFromExecution("qict dataArguments.txt");
+            executeAppWithCombinedTests(reader, arguments, constraints);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void invalidCombination(String line, Constraints constraints) {
         if (line.matches("^\\s[a-z].+")) {
@@ -51,92 +64,67 @@ public class Main {
         }
     }
 
-    public static boolean isTestValid(HashMap<String, Object> test, HashMap<String, Object> constraint){
+    public static boolean isTestValid(HashMap<String, Object> test, HashMap<String, Object> constraint) {
         int numberOfConstraintArguments = constraint.size();
-        //System.out.println(numberOfConstraintArguments);
         int countNumberOfArgumentsNotValid = 0;
-        for(String constraintArgument : constraint.keySet()){
-            for(String testArgument : test.keySet()){
-                if(constraintArgument.equals(testArgument) && constraint.get(constraintArgument).equals(test.get(testArgument))){
+        for (String constraintArgument : constraint.keySet()) {
+            for (String testArgument : test.keySet()) {
+                if (constraintArgument.equals(testArgument) && constraint.get(constraintArgument).equals(test.get(testArgument)))
                     countNumberOfArgumentsNotValid++;
-                }
             }
         }
-        //System.out.println(countNumberOfArgumentsNotValid);
         return (countNumberOfArgumentsNotValid == numberOfConstraintArguments) ? false : true;
     }
 
-    public static String generateExecutionStringWithConstraints(HashMap<String, Object> tests, Constraints constraints){
+    public static String generateExecutionStringWithConstraints(HashMap<String, Object> tests, Constraints constraints) {
         boolean isValid = true;
-        principalLoop : for(HashMap<String, Object> constraint : constraints.getConstraints()){
-            //System.out.println("\t" + constraint);
-            if(!isTestValid(tests, constraint)){
+        principalLoop:
+        for (HashMap<String, Object> constraint : constraints.getConstraints()) {
+            if (!isTestValid(tests, constraint)) {
                 isValid = false;
                 break principalLoop;
             }
         }
-        //System.out.println(isValid);
-        if(isValid){
-            String execution = "/home/stev/tp2-app.sh";
-            for(String argumentName : tests.keySet()){
-                execution += " -" + argumentName;
-                if(!tests.get(argumentName).equals("")){
-                    execution += " " + tests.get(argumentName);
-                }
+
+        if (isValid) {
+            StringBuilder execution = new StringBuilder("/home/stev/tp2-app.sh");
+            for (String argumentName : tests.keySet()) {
+                execution.append(" -" + argumentName);
+                if (!tests.get(argumentName).equals(""))
+                    execution.append(" " + tests.get(argumentName));
             }
-            return execution;
-        }else
-            return null;
+            return execution.toString();
+        }
+        return null;
     }
 
     public static void executeAppWithCombinedTests(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception {
-        String line = new String();
+        String line;
         while ((line = reader.readLine()) != null) {
             HashMap<String, Object> tests = new HashMap<>();
-            String execution = "/home/stev/tp2-app.sh";
+            String execution;
             String combinedArgs[] = line.split("\\t");
+
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
                 int i = 1;
                 for (String argumentName : arguments.getArgumentsName()) {
                     if (!argumentName.equals("-h")) {
                         argumentName = argumentName.replace("-", "");
-                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
-                            if (combinedArgs[i].equals("true")) {
-                                tests.put(argumentName, "");
-                            }
 
-                        } else {
+                        if (combinedArgs[i].equals("true"))
+                            tests.put(argumentName, "");
+                        else if (!combinedArgs[i].equals("false"))
                             tests.put(argumentName, combinedArgs[i]);
-                        }
+
                         i++;
                     }
                 }
-                //System.out.println(tests);
                 execution = generateExecutionStringWithConstraints(tests, constraints);
-                if(execution != null) {
+                if (execution != null) {
                     System.out.println(execution);
                     printBuffer(getBufferFromExecution(execution));
                 }
             }
-        }
-    }
-
-    public static void main(String[] args) throws IOException {
-        try {
-            BufferedReader reader = getBufferFromExecution("/home/stev/tp2-app.sh -h");
-
-            Arguments arguments = new Arguments();
-            Constraints constraints = new Constraints();
-            getArgumentsAndConstraints(reader, arguments, constraints);
-
-            generateDataFile(arguments);
-
-            reader = getBufferFromExecution("qict dataArguments.txt");
-
-            executeAppWithCombinedTests(reader, arguments, constraints);
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
