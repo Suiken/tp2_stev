@@ -60,9 +60,9 @@ public class Main {
 
     public static void executeAppWithCombinedTests(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception {
         String line = new String();
+        System.out.println(constraints.toString());
         ArrayList<HashMap<String, Object>> tests = new ArrayList<>();
         while ((line = reader.readLine()) != null) {
-            System.out.println(line);
             String execution = "/home/stev/tp2-app.sh";
             String combinedArgs[] = line.split("\\t");
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
