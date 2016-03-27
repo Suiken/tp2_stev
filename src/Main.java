@@ -69,8 +69,8 @@ public class Main {
 
                 for (String argumentName : arguments.getArgumentsName()) {
                     HashMap<String, Object> test = new HashMap<>();
-//                    System.out.println(argumentName + " " + combinedArgs[i]);
-                    test.put(argumentName, combinedArgs[i]);
+                    System.out.println(argumentName + " " + combinedArgs[i]);
+                    test.put(argumentName, "test");
                     tests.add(test);
                     i++;
                 }
