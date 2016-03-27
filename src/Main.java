@@ -60,24 +60,32 @@ public class Main {
 
     public static void executeAppWithCombinedTests(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception {
         String line = new String();
-        System.out.println(constraints.toString());
         ArrayList<HashMap<String, Object>> tests = new ArrayList<>();
         while ((line = reader.readLine()) != null) {
             String execution = "/home/stev/tp2-app.sh";
             String combinedArgs[] = line.split("\\t");
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
                 int i = 1;
+
                 for (String argumentName : arguments.getArgumentsName()) {
-                    if (!argumentName.equals("-h")) {
-                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
-                            if (combinedArgs[i].equals("true")) {
-                                execution += " " + argumentName;
-                            }
-                        } else
-                            execution += " " + argumentName + " " + combinedArgs[i];
-                        i++;
-                    }
+                    HashMap<String, Object> test = new HashMap<>();
+                    test.put(argumentName, combinedArgs[i]);
+                    tests.add(test);
+                    System.out.println(argumentName + " " + combinedArgs[i]);
+                    i++;
                 }
+
+//                for (String argumentName : arguments.getArgumentsName()) {
+//                    if (!argumentName.equals("-h")) {
+//                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
+//                            if (combinedArgs[i].equals("true")) {
+//                                execution += " " + argumentName;
+//                            }
+//                        } else
+//                            execution += " " + argumentName + " " + combinedArgs[i];
+//                        i++;
+//                    }
+//                }
 //                System.out.println(execution);
 //                printBuffer(getBufferFromExecution(execution));
             }
