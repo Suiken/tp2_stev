@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -32,16 +31,15 @@ public class Arguments {
 
     public String formatQICT() {
         String s = new String();
-        for(String argument : arguments.keySet()){
+        for (String argument : arguments.keySet()) {
             if (!argument.equals("-h")) {
                 boolean firstLoop = true;
                 s += argument + ": ";
-                for(String option : arguments.get(argument)){
+                for (String option : arguments.get(argument)) {
                     option = option.replace(" ", "");
                     if (option.equals("flag")) {
                         s += "true, false";
-                    }
-                    else if (firstLoop){
+                    } else if (firstLoop) {
 
                         s += option;
                         firstLoop = false;
@@ -56,11 +54,11 @@ public class Arguments {
         return s;
     }
 
-    public int getArgumentsNumber(){
+    public int getArgumentsNumber() {
         return arguments.keySet().size();
     }
 
-    public Set<String> getArgumentsName(){
+    public Set<String> getArgumentsName() {
         return arguments.keySet();
     }
 }
