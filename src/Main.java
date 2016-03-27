@@ -67,15 +67,14 @@ public class Main {
             String combinedArgs[] = line.split("\\t");
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
                 int i = 1;
-
+                HashMap<String, Object> test = new HashMap<>();
                 for (String argumentName : arguments.getArgumentsName()) {
                     if (!argumentName.equals("-h")) {
-                        HashMap<String, Object> test = new HashMap<>();
                         test.put(argumentName, combinedArgs[i]);
-                        tests.add(test);
                         i++;
                     }
                 }
+                tests.add(test);
 //                for (String argumentName : arguments.getArgumentsName()) {
 //                    if (!argumentName.equals("-h")) {
 //                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
