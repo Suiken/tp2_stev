@@ -91,8 +91,8 @@ public class Main {
 
     public static void executeAppWithCombinedTests(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception {
         String line = new String();
-        HashMap<String, Object> tests = new HashMap<>();
         while ((line = reader.readLine()) != null) {
+            HashMap<String, Object> tests = new HashMap<>();
             String execution = "/home/stev/tp2-app.sh";
             String combinedArgs[] = line.split("\\t");
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
