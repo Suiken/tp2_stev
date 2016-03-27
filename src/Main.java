@@ -40,7 +40,7 @@ public class Main {
 
         generateDataFile(arguments);
         //System.out.println(arguments.formatQICT());
-        System.out.println(constraints);
+        //System.out.println(constraints);
     }
 
     public static void getArgumentsAndConstraints(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception {
@@ -60,7 +60,7 @@ public class Main {
 
     public static boolean isTestValid(HashMap<String, Object> test, HashMap<String, Object> constraint){
         int numberOfConstraintArguments = constraint.size();
-        System.out.println(numberOfConstraintArguments);
+        //System.out.println(numberOfConstraintArguments);
         int countNumberOfArgumentsNotValid = 0;
         for(String constraintArgument : constraint.keySet()){
             for(String testArgument : test.keySet()){
@@ -69,20 +69,20 @@ public class Main {
                 }
             }
         }
-        System.out.println(countNumberOfArgumentsNotValid);
+        //System.out.println(countNumberOfArgumentsNotValid);
         return (countNumberOfArgumentsNotValid == numberOfConstraintArguments) ? false : true;
     }
 
     public static String generateExecutionStringWithConstraints(HashMap<String, Object> tests, Constraints constraints){
         boolean isValid = true;
         principalLoop : for(HashMap<String, Object> constraint : constraints.getConstraints()){
-            System.out.println("\t" + constraint);
+            //System.out.println("\t" + constraint);
             if(!isTestValid(tests, constraint)){
                 isValid = false;
                 break principalLoop;
             }
         }
-        System.out.println(isValid);
+        //System.out.println(isValid);
         if(isValid){
             String execution = "/home/stev/tp2-app.sh";
             for(String argumentName : tests.keySet()){
@@ -119,7 +119,7 @@ public class Main {
                         i++;
                     }
                 }
-                System.out.println(tests);
+                //System.out.println(tests);
                 execution = generateExecutionStringWithConstraints(tests, constraints);
                 if(execution != null) {
                     System.out.println(execution);

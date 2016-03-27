@@ -52,7 +52,7 @@ public class Arguments {
                 s += "\n";
             }
         }
-        System.out.println(s);
+        //System.out.println(s);
         return s;
     }
 
