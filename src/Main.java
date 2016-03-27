@@ -36,13 +36,6 @@ public class Main {
         return new BufferedReader(new InputStreamReader(p.getInputStream()));
     }
 
-    public static void generateQICTFile(Arguments arguments, Constraints constraints) throws Exception {
-
-        generateDataFile(arguments);
-        //System.out.println(arguments.formatQICT());
-        //System.out.println(constraints);
-    }
-
     public static void getArgumentsAndConstraints(BufferedReader reader, Arguments arguments, Constraints constraints) throws Exception {
         String line;
         while ((line = reader.readLine()) != null) {
@@ -103,6 +96,7 @@ public class Main {
             String execution = "/home/stev/tp2-app.sh";
             String combinedArgs[] = line.split("\\t");
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
+                System.out.println(reader.toString());
                 int i = 1;
                 for (String argumentName : arguments.getArgumentsName()) {
                     if (!argumentName.equals("-h")) {
@@ -137,13 +131,12 @@ public class Main {
             Constraints constraints = new Constraints();
             getArgumentsAndConstraints(reader, arguments, constraints);
 
-            generateQICTFile(arguments, constraints);
+            generateDataFile(arguments);
 
             reader = getBufferFromExecution("qict dataArguments.txt");
 
             executeAppWithCombinedTests(reader, arguments, constraints);
 
-//            arguments.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
