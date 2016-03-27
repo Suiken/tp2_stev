@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Main {
 
@@ -68,13 +69,13 @@ public class Main {
                 int i = 1;
 
                 for (String argumentName : arguments.getArgumentsName()) {
-                    HashMap<String, Object> test = new HashMap<>();
-                    System.out.println(argumentName + " " + combinedArgs[i]);
-                    test.put(argumentName, "test");
-                    tests.add(test);
-                    i++;
+                    if (!argumentName.equals("-h")) {
+                        HashMap<String, Object> test = new HashMap<>();
+                        test.put(argumentName, combinedArgs[i]);
+                        tests.add(test);
+                        i++;
+                    }
                 }
-
 //                for (String argumentName : arguments.getArgumentsName()) {
 //                    if (!argumentName.equals("-h")) {
 //                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
