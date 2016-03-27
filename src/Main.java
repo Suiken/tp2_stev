@@ -101,16 +101,14 @@ public class Main {
                 for (String argumentName : arguments.getArgumentsName()) {
                     if (!argumentName.equals("-h")) {
                         argumentName = argumentName.replace("-", "");
-                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
+                        if (!combinedArgs[i].equals("true") && !combinedArgs[i].equals("false")) {
+                            tests.put(argumentName, combinedArgs[i]);
+                        } else {
                             System.out.println("boolean");
                             if (combinedArgs[i].equals("true")) {
                                 System.out.println("isTrue");
-                                //execution += " " + argumentName;
                                 tests.put(argumentName, "");
                             }
-                        } else {
-                            //execution += " " + argumentName + " " + combinedArgs[i];
-                            tests.put(argumentName, combinedArgs[i]);
                         }
                         i++;
                     }
