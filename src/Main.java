@@ -96,7 +96,7 @@ public class Main {
             String execution = "/home/stev/tp2-app.sh";
             String combinedArgs[] = line.split("\\t");
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
-                System.out.println(reader.toString());
+                System.out.println(line);
                 int i = 1;
                 for (String argumentName : arguments.getArgumentsName()) {
                     if (!argumentName.equals("-h")) {
