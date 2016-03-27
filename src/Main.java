@@ -62,6 +62,7 @@ public class Main {
         String line = new String();
         ArrayList<HashMap<String, Object>> tests = new ArrayList<>();
         while ((line = reader.readLine()) != null) {
+            System.out.println(line);
             String execution = "/home/stev/tp2-app.sh";
             String combinedArgs[] = line.split("\\t");
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
@@ -77,8 +78,8 @@ public class Main {
                         i++;
                     }
                 }
-                System.out.println(execution);
-                printBuffer(getBufferFromExecution(execution));
+//                System.out.println(execution);
+//                printBuffer(getBufferFromExecution(execution));
             }
         }
     }
