@@ -96,19 +96,17 @@ public class Main {
             String execution = "/home/stev/tp2-app.sh";
             String combinedArgs[] = line.split("\\t");
             if (combinedArgs.length == arguments.getArgumentsNumber()) {
-                System.out.println(line);
                 int i = 1;
                 for (String argumentName : arguments.getArgumentsName()) {
                     if (!argumentName.equals("-h")) {
                         argumentName = argumentName.replace("-", "");
-                        if (!combinedArgs[i].equals("true") && !combinedArgs[i].equals("false")) {
-                            tests.put(argumentName, combinedArgs[i]);
-                        } else {
-                            System.out.println("boolean");
+                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
                             if (combinedArgs[i].equals("true")) {
-                                System.out.println("isTrue");
                                 tests.put(argumentName, "");
                             }
+
+                        } else {
+                            tests.put(argumentName, combinedArgs[i]);
                         }
                         i++;
                     }
