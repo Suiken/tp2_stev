@@ -75,6 +75,7 @@ public class Main {
                     }
                 }
                 tests.add(test);
+
 //                for (String argumentName : arguments.getArgumentsName()) {
 //                    if (!argumentName.equals("-h")) {
 //                        if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
