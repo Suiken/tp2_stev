@@ -102,7 +102,9 @@ public class Main {
                     if (!argumentName.equals("-h")) {
                         argumentName = argumentName.replace("-", "");
                         if (combinedArgs[i].equals("true") || combinedArgs[i].equals("false")) {
+                            System.out.println("boolean");
                             if (combinedArgs[i].equals("true")) {
+                                System.out.println("isTrue");
                                 //execution += " " + argumentName;
                                 tests.put(argumentName, "");
                             }
