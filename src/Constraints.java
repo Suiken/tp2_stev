@@ -14,10 +14,7 @@ public class Constraints {
         String subConstraintsTab[] = constraint.split("&");
         for(int i = 0; i < subConstraintsTab.length; i++){
             String argumentAndValue[] = subConstraintsTab[i].split("=");
-            if(argumentAndValue.length > 1)
-                subConstraints.put(argumentAndValue[0], argumentAndValue[1]);
-            else
-                subConstraints.put(argumentAndValue[0], "");
+            subConstraints.put(argumentAndValue[0], argumentAndValue.length > 1 ? argumentAndValue[1] : "");
         }
         constraints.add(subConstraints);
     }
@@ -27,18 +24,14 @@ public class Constraints {
     }
 
     public String toString(){
-        String s = new String();
+        StringBuilder sb = new StringBuilder();
         for(HashMap<String, Object> subConstraints : constraints){
             for(String argument : subConstraints.keySet()) {
-                s += "arg : " + argument + ", value : ";
-                if (subConstraints.get(argument).equals(""))
-                    s += "no value";
-                else
-                    s += subConstraints.get(argument);
-                s += "\n";
+                sb.append("arg : " + argument + ", value : ");
+                sb.append(subConstraints.get(argument).equals("") ? "no value\n" : "\n");
             }
-            s += "\n";
+            sb.append("\n");
         }
-        return s;
+        return sb.toString();
     }
 }

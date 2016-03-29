@@ -10,48 +10,50 @@ public class Arguments {
 
     public void addOption(String argument, String option) {
         ArrayList<String> options = arguments.get(argument);
-        if (options == null) {
+
+        if (options == null)
             options = new ArrayList<>();
-            options.add(option);
-            arguments.put(argument, options);
-        } else
-            options.add(option);
+
+        arguments.put(argument, options);
+        options.add(option);
     }
 
     public String toString() {
-        String s = new String();
+        StringBuilder sb = new StringBuilder();
         for (String argument : arguments.keySet()) {
-            s += argument + "\n";
+            sb.append(argument + "\n");
             for (String option : arguments.get(argument)) {
-                s += "\t" + option + "\n";
+                sb.append("\t" + option + "\n");
             }
         }
-        return s;
+        return sb.toString();
     }
 
     public String formatQICT() {
-        String s = new String();
+        StringBuilder sb = new StringBuilder();
         for (String argument : arguments.keySet()) {
             if (!argument.equals("-h")) {
                 boolean firstLoop = true;
-                s += argument + ": ";
+                sb.append(argument + ": ");
+
                 for (String option : arguments.get(argument)) {
                     option = option.replace(" ", "");
-                    if (option.equals("flag")) {
-                        s += "true, false";
-                    } else if (firstLoop) {
 
-                        s += option;
+                    if (option.equals("flag")) {
+                        sb.append("true, false");
+                    }
+                    else if (firstLoop) {
+                        sb.append(option);
                         firstLoop = false;
-                    } else {
-                        s += ", " + option;
+                    }
+                    else {
+                        sb.append(", " + option);
                     }
                 }
-                s += "\n";
+                sb.append("\n");
             }
         }
-        //System.out.println(s);
-        return s;
+        return sb.toString();
     }
 
     public int getArgumentsNumber() {
